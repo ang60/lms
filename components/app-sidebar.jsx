@@ -18,9 +18,14 @@ import {
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 import {
-  Settings2,
+  LayoutDashboard,
+  BookOpen,
+  Calendar,
+  ClipboardList,
+  Settings,
+} from "lucide-react";
 
-} from "lucide-react"
+
 
 
 
@@ -29,7 +34,10 @@ const data = {
   
   navMain: [
     {
-      title: "Dashboard",
+      title: "Dashboard",   
+       icon: <LayoutDashboard size={20} />, // Dashboard Icon
+
+      
       // url: "#",
       // items: [
       //   {
@@ -41,6 +49,9 @@ const data = {
     },
     {
       title: "Courses",
+          icon: <BookOpen size={20}  className="text-black"/>, // Open Book Icon
+        
+
       // url: "#",
       items: [
         {
@@ -55,6 +66,8 @@ const data = {
     },
     {
       title: "Schedule",
+          icon: <Calendar size={20} />, // Calendar Icon
+
       // url: "#",
       items: [
         {
@@ -66,6 +79,8 @@ const data = {
     },
     {
       title: "Quizzes",
+          icon: <ClipboardList size={20} />, // Clipboard Icon
+
       // url: "#",
       items: [
         {
@@ -81,6 +96,8 @@ const data = {
     },
     {
       title: "Settings",
+          icon: <Settings size={20} />, // Settings Gear Icon
+
       url: "#",
       items: [
         {
@@ -122,10 +139,13 @@ export function AppSidebar({
         <SidebarGroup>
           <SidebarMenu>
             {data.navMain.map((item) => (
-              <SidebarMenuItem key={item.title}>
+              <SidebarMenuItem key={item.title} >
                 <SidebarMenuButton asChild>
                   <a href={item.url} className="font-medium">
+                    <div className="w-6 h-6 text-gray-600">{item.icon}</div>  {/* ✅ Ensure it renders */}
                     {item.title}
+                    
+      {/* <span className="text-sm font-medium">{item.title}</span> */}
                   </a>
                 </SidebarMenuButton>
                 {item.items?.length ? (
@@ -168,4 +188,5 @@ export function AppSidebar({
       <SidebarRail />
     </Sidebar>
   );
+  
 }
